@@ -5,7 +5,7 @@ import Navbar from "../../Pages/Shared/Navbar/Navbar";
 
 export default function MainLayout() {
   return (
-    <div>
+    <div className="w-[1080px] mx-auto">
       <Navbar />
       <Outlet />
       <Footer />
