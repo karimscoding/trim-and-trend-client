@@ -13,7 +13,10 @@ export default function AppointmentOptions({ appointmentOption }) {
           {slots.length} {slots.length > 1 ? "spaces" : "space"} Available
         </p>
         <div className="card-actions justify-center">
-          <button className="btn btn-primary text-white">
+          <button
+            className="btn btn-primary text-white"
+            onClick={() => window.booking.showModal()}
+          >
             Book Appointment
           </button>
         </div>
