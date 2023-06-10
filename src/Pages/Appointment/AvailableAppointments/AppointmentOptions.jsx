@@ -14,6 +14,7 @@ export default function AppointmentOptions({ appointmentOption, setServices }) {
         </p>
         <div className="card-actions justify-center">
           <button
+            disabled={slots.length === 0}
             className="btn btn-primary text-white"
             onClick={() => {
               setServices(appointmentOption);
