@@ -57,7 +57,9 @@ export default function Navbar() {
         <ul className="menu menu-horizontal px-1">{menuItems}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn btn-sm btn-accent">Sign in</a>
+        <Link to="/login" className="btn btn-sm btn-accent">
+          Login
+        </Link>
       </div>
     </div>
   );
