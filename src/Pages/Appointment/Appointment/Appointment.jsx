@@ -1,7 +1,6 @@
 import DayPickerForm from "../../../components/DayPickerForm/DayPickerForm";
 import { useState } from "react";
 import AvailableAppointments from "../AvailableAppointments/AvailableAppointments";
-import BookingModal from "../BookingModal/BookingModal";
 
 export default function Appointment() {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -17,7 +16,7 @@ export default function Appointment() {
       <div>
         <AvailableAppointments selectedDate={selectedDate} />
       </div>
-      <BookingModal />
+ 
     </div>
   );
 }

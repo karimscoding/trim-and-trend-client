@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function AppointmentOptions({ appointmentOption }) {
+export default function AppointmentOptions({ appointmentOption, setServices }) {
   const { slots, name } = appointmentOption;
   return (
     <div className="card bg-base-100 shadow-xl text-center">
@@ -15,7 +15,10 @@ export default function AppointmentOptions({ appointmentOption }) {
         <div className="card-actions justify-center">
           <button
             className="btn btn-primary text-white"
-            onClick={() => window.booking.showModal()}
+            onClick={() => {
+              setServices(appointmentOption);
+              window.booking.showModal();
+            }}
           >
             Book Appointment
           </button>
