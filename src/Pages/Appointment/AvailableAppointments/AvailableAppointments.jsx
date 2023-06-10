@@ -33,7 +33,11 @@ export default function AvailableAppointments({ selectedDate }) {
         ))}
       </div>
       {services && (
-        <BookingModal services={services} selectedDate={selectedDate} />
+        <BookingModal
+          services={services}
+          selectedDate={selectedDate}
+          setServices={setServices}
+        />
       )}
     </section>
   );
