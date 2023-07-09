@@ -1,6 +1,3 @@
-import React from "react";
-import { format } from "date-fns";
-
 import { DayPicker } from "react-day-picker";
 
 export default function DayPickerForm({ selectedDate, setSelectedDate }) {

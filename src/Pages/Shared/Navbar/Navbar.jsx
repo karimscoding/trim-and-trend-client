@@ -1,30 +1,33 @@
-import React from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
-
-const menuItems = (
-  <>
-    <li>
-      <Link to="/">Home</Link>
-    </li>
-    <li>
-      <Link to="/appointment">Appointment</Link>
-    </li>
-    <li>
-      <Link to="/reviews">Reviews</Link>
-    </li>
-    <li>
-      <Link to="/about">About</Link>
-    </li>
-    <li>
-      <Link to="/contact">Contact</Link>
-    </li>
-  </>
-);
+import { AuthContext } from "../../../contexts/AuthProvider";
 
 export default function Navbar() {
+  const { user } = useContext(AuthContext);
+
+  const menuItems = (
+    <>
+      <li>
+        <Link to="/">Home</Link>
+      </li>
+      <li>
+        <Link to="/appointment">Appointment</Link>
+      </li>
+      <li>
+        <Link to="/reviews">Reviews</Link>
+      </li>
+      <li>
+        <Link to="/about">About</Link>
+      </li>
+      <li>
+        <Link to="/contact">Contact</Link>
+      </li>
+    </>
+  );
+
   return (
-    <div className="navbar bg-base-100">
-      <div className="navbar-start">
+    <header className="navbar sticky top-0">
+      <nav className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
             <svg
@@ -49,18 +52,24 @@ export default function Navbar() {
             {menuItems}
           </ul>
         </div>
-        <Link to="/" className="text-3xl font-bold text-warning">
-          Trim & Trend
+        <Link to="/" className="text-xl font-bold text-primary">
+          Shear Scheduler
         </Link>
-      </div>
+      </nav>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{menuItems}</ul>
       </div>
       <div className="navbar-end">
-        <Link to="/login" className="btn btn-sm btn-accent">
-          Login
-        </Link>
+        {user?.uid ? (
+          <Link to="/logout" className="btn btn-sm btn-accent">
+            logout
+          </Link>
+        ) : (
+          <Link to="/login" className="btn btn-sm btn-accent">
+            Login
+          </Link>
+        )}
       </div>
-    </div>
+    </header>
   );
 }

@@ -1,5 +1,7 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 export default function SignUp() {
   const {
@@ -7,15 +9,23 @@ export default function SignUp() {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const { createUser } = useContext(AuthContext);
 
   const handleSignUp = (data) => {
     console.log(data);
-    console.log(errors);
+    createUser(data.email, data.password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.log(error));
   };
   return (
     <div className="h-[800px] flex justify-center items-center">
-      <div className="w-96 p-4">
-        <h1>Sign up</h1>
+      <div className="w-96 ">
+        <div className="flex justify-center">
+          <h1 className="text-xl font-semibold">Sign up</h1>
+        </div>
         <form onSubmit={handleSubmit(handleSignUp)}>
           <div className="form-control w-full">
             <label className="label">

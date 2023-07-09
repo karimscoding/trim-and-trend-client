@@ -1,5 +1,8 @@
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 export default function Login() {
   const {
@@ -8,8 +11,23 @@ export default function Login() {
     handleSubmit,
   } = useForm();
 
+  const { signIn } = useContext(AuthContext);
+
+  const [isLoginError, setIsLoginError] = useState("");
+
   const handleLogin = (data) => {
     console.log(data);
+    setIsLoginError("");
+    signIn(data.email, data.password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success("You've Successfully Logged in");
+      })
+      .catch((error) => {
+        setIsLoginError(error.message);
+        toast.success(error.message);
+      });
   };
 
   return (
@@ -40,7 +58,10 @@ export default function Login() {
               type="password"
               {...register("password", {
                 required: "Password is required",
-                minLength: { value: 6 , message:"password past be 6 character or longer"},
+                minLength: {
+                  value: 6,
+                  message: "password past be 6 character or longer",
+                },
               })}
               className="input input-bordered w-full"
               placeholder="*****"
@@ -52,6 +73,8 @@ export default function Login() {
             {errors.password && (
               <p className="text-red-600">{errors.password?.message}</p>
             )}
+
+            {isLoginError && <p className="text-red-500">{isLoginError}</p>}
           </div>
 
           <input

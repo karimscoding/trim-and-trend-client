@@ -5,9 +5,11 @@ import BookingModal from "../BookingModal/BookingModal";
 import AppointmentOptions from "./AppointmentOptions";
 
 export default function AvailableAppointments({ selectedDate }) {
-  // appointment state
+  
+  // APPOINTMENT STATE
   const [appointmentOptions, setAppointmentOptions] = useState([]);
-  // services state
+
+  // SERVICES STATE
   const [services, setServices] = useState(null);
 
   useEffect(() => {
