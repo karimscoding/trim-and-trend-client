@@ -1,5 +1,3 @@
-import React from "react";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
@@ -24,9 +22,10 @@ export default function Login() {
               <span className="label-text">Email</span>
             </label>
             <input
-              type="text"
+              type="email"
               {...register("email", { required: "Email is required" })}
               className="input input-bordered w-full"
+              placeholder="Email"
             />
             {errors.email && (
               <p className="text-red-600">{errors.email?.message}</p>
@@ -39,8 +38,12 @@ export default function Login() {
             </label>
             <input
               type="password"
-              {...register("password", { required: "Password is required" })}
-              className="input input-bordered w-full  "
+              {...register("password", {
+                required: "Password is required",
+                minLength: { value: 6 , message:"password past be 6 character or longer"},
+              })}
+              className="input input-bordered w-full"
+              placeholder="*****"
             />
             <label className="label">
               <span className="label-text">Forget Password?</span>
@@ -58,7 +61,7 @@ export default function Login() {
           />
         </form>
         <p className="mt-5">
-          New to Trim & Trend{" "}
+          New to Trim & Trend?{" "}
           <Link to="/signup" className="text-primary">
             Create a account
           </Link>

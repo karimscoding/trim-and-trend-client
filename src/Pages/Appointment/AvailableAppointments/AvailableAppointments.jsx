@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import { format } from "date-fns";
 import { useEffect, useState } from "react";
-import AppointmentOptions from "./AppointmentOptions";
 import BookingModal from "../BookingModal/BookingModal";
+import AppointmentOptions from "./AppointmentOptions";
 
 export default function AvailableAppointments({ selectedDate }) {
   // appointment state

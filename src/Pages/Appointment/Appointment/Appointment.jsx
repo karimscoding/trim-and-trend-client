@@ -1,5 +1,5 @@
-import DayPickerForm from "../../../components/DayPickerForm/DayPickerForm";
 import { useState } from "react";
+import DayPickerForm from "../../../components/DayPickerForm/DayPickerForm";
 import AvailableAppointments from "../AvailableAppointments/AvailableAppointments";
 
 export default function Appointment() {
@@ -16,7 +16,6 @@ export default function Appointment() {
       <div>
         <AvailableAppointments selectedDate={selectedDate} />
       </div>
- 
     </div>
   );
 }

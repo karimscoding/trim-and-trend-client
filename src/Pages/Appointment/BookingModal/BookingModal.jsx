@@ -1,5 +1,5 @@
+/* eslint-disable react/prop-types */
 import { format } from "date-fns";
-import React from "react";
 
 export default function BookingModal({ services, selectedDate, setServices }) {
   const { name, slots } = services;
